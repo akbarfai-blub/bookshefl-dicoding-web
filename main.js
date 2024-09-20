@@ -1,10 +1,22 @@
 let books = [];
 let editedBookId = null; // Menyimpan ID buku yang sedang diedit
 
+// Fungsi untuk menyimpan buku ke localStorage
+const saveBooksToLocalStorage = () => {
+  localStorage.setItem("books", JSON.stringify(books)); // Simpan array books ke localStorage
+};
+
+// Fungsi untuk memuat buku dari localStorage
+const loadBooksFromLocalStorage = () => {
+  const storedBooks = localStorage.getItem("books"); // Ambil data dari localStorage
+  if (storedBooks) {
+    books = JSON.parse(storedBooks); // Ubah string JSON kembali menjadi array objek
+  }
+};
+
 // Fungsi untuk menambahkan atau memperbarui buku
 const addOrUpdateBook = (title, author, year, isComplete) => {
   if (editedBookId !== null) {
-    // Mode edit: update buku
     const bookIndex = books.findIndex((book) => book.id === editedBookId);
     if (bookIndex !== -1) {
       books[bookIndex] = {
@@ -17,7 +29,6 @@ const addOrUpdateBook = (title, author, year, isComplete) => {
     }
     editedBookId = null; // Reset setelah update
   } else {
-    // Mode tambahkan buku baru
     const bookId = Date.now(); // Buat ID unik
     const book = {
       id: bookId,
@@ -30,12 +41,14 @@ const addOrUpdateBook = (title, author, year, isComplete) => {
   }
 
   renderBooks();
+  saveBooksToLocalStorage(); // Simpan perubahan ke localStorage
 };
 
 // Fungsi untuk menghapus buku berdasarkan ID-nya
 const deleteBook = (bookId) => {
   books = books.filter((book) => book.id !== bookId);
   renderBooks();
+  saveBooksToLocalStorage(); // Simpan perubahan ke localStorage
 };
 
 // Fungsi untuk mengisi form dengan data buku yang akan diedit
@@ -52,6 +65,19 @@ const editBook = (bookId) => {
 
     // Ubah teks tombol submit menjadi 'Update Buku'
     document.getElementById("bookFormSubmit").textContent = "Update Buku";
+  }
+};
+
+const toggleBookStatus = (bookId) => {
+  // Temukan buku berdasarkan ID
+  const book = books.find((book) => book.id === bookId);
+  if (book) {
+    // Ubah status isComplete
+    book.isComplete = !book.isComplete;
+
+    // Render ulang buku dan simpan perubahan ke localStorage
+    renderBooks();
+    saveBooksToLocalStorage(); // Simpan perubahan ke localStorage
   }
 };
 
@@ -142,4 +168,10 @@ document.getElementById("searchBook").addEventListener("submit", (event) => {
 
   const query = document.getElementById("searchBookTitle").value;
   searchBooks(query); // Panggil fungsi pencarian dengan input pengguna
+});
+
+// Load buku dari localStorage ketika halaman dibuka
+document.addEventListener("DOMContentLoaded", () => {
+  loadBooksFromLocalStorage(); // Load buku dari localStorage
+  renderBooks(); // Render buku yang ada
 });
