@@ -1,0 +1,205 @@
+/* Styling Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Styling Header */
+  header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  header h1 {
+    font-size: 2.5em;
+  }
+  
+  /* Styling Main Section */
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  section {
+    margin-bottom: 30px;
+  }
+  
+  section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #2980b9;
+  }
+  
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  form input[type="text"],
+  form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  form button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #3498db;
+  }
+  
+  form button span {
+    font-weight: bold;
+  }
+  
+  /* Styling untuk Daftar Buku */
+  #incompleteBookList,
+  #completeBookList {
+    padding: 10px;
+  }
+  
+  [data-testid="bookItem"] {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  [data-testid="bookItem"] h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+  }
+  
+  [data-testid="bookItem"] p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #7f8c8d;
+  }
+  
+  [data-testid="bookItem"] button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+  }
+  
+  [data-testid="bookItem"] button:hover {
+    background-color: #34495e;
+  }
+  
+  [data-testid="bookItemDeleteButton"] {
+    background-color: #e74c3c;
+  }
+  
+  [data-testid="bookItemDeleteButton"]:hover {
+    background-color: #c0392b;
+  }
+  
+  [data-testid="bookItemEditButton"] {
+    background-color: #f39c12;
+  }
+  
+  [data-testid="bookItemEditButton"]:hover {
+    background-color: #e67e22;
+  }
+  
+  /* Styling untuk Form Cari Buku */
+  #searchBook {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #searchBook label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #searchBook input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #searchBook button {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  #searchBook button:hover {
+    background-color: #2ecc71;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    main {
+      width: 90%;
+    }
+    
+    form div {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    form input[type="checkbox"] {
+      align-self: flex-start;
+    }
+  }
+  
+  
